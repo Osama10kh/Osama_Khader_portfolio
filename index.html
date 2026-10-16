@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020403">
+  <title>Osama Khader | Portfolio</title>
+
+  <!-- Google Fonts: خطوط فخمة للوقو والنصوص -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="space-background">
+    <canvas id="cursor-canvas"></canvas>
+    <div id="tsparticles"></div>
+    <div class="ambient-glow"></div>
+  </div>
+
+  <!-- ==========================================================
+       [SECTION: NAVIGATION BAR, LOGO & CONTACT BUTTON]
+       ========================================================== -->
+  <header class="navbar-container">
+      <nav class="navbar">
+          <!-- اللوقو على اليسار -->
+          <div class="logo-wrapper" id="logo-trigger">
+              <span class="logo-text default-logo">O.K</span>
+              <span class="logo-text hover-logo">OSAMA</span>
+          </div>
+
+          <!-- روابط الناف بار في المنتصف -->
+          <ul class="nav-links">
+              <li><a href="#home" class="nav-link">Home</a></li>
+              <li><a href="#about" class="nav-link">About</a></li>
+              <li><a href="#projects" class="nav-link">Projects</a></li>
+          </ul>
+
+          <!-- زر Contact Me على أقصى اليمين -->
+          <div class="nav-right">
+              <a href="#contact" class="contact-btn">Contact Me</a>
+          </div>
+      </nav>
+  </header>
+
+  <main class="portfolio-content">
+    <!-- المحتوى القادم -->
+     <!-- ==========================================================
+     ==========================================================
+     [SECTION: HERO / HOME SECTION - MEDIEVAL SHIELD & VIEW CV]
+     استبدل قسم الـ hero-section بهذا الكود
+     ==========================================================
+     ========================================================== -->
+<section id="home" class="hero-section">
+    <div class="hero-container">
+        
+        <!-- إطار درع الحروب التكتيكي وصورتك الشخصية -->
+        <div class="shield-avatar-container">
+            <div class="shield-outer-glow"></div>
+            <div class="shield-frame">
+                <!-- استبدل your-photo.jpg بمسار صورتك -->
+                <img src="./assets/my-photo.jpg" alt="SOC Analyst Avatar" class="shield-img">
+            </div>
+        </div>
+
+        <!-- المحتوى النصي والتعريفي -->
+        <div class="hero-text-content">
+            <div class="status-badge">
+                <span class="pulse-dot"></span> Available for SOC & Defense Security Roles
+            </div>
+
+            <!-- المسمى الوظيفي بتأثير الكتابة التلقائية -->
+            <h1 class="hero-title">
+                I am a <span id="typing-text" class="highlight-text"></span><span class="cursor-blink">|</span>
+            </h1>
+
+            <p class="hero-description">
+                Specialized in SOC operations, threat analysis, and SIEM monitoring. Dedicated to defending digital infrastructures while crafting sleek, high-performance web experiences.
+            </p>
+
+            <!-- شريط التقنيات والمهارات السيبرانية المصغر (مضاف حديثاً) -->
+            <div class="hero-tech-badges">
+                <span class="tech-tag">Wazuh SIEM</span>
+                <span class="tech-tag">Threat Intel</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Linux / OSINT</span>
+            </div>
+
+            <!-- أزرار التفاعل -->
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">
+                    <span>Explore Projects</span>
+                </a>
+                <a href="cv.pdf" target="_blank" class="btn-secondary">
+                    <span>View CV</span>
+                </a>
+            </div>
+
+            <!-- روابط التواصل السريعة -->
+            <div class="hero-socials">
+                <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="mailto:example@domain.com" class="social-icon" title="Email">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- عداد الإحصائيات المصغر في أقصى اليسار من الأسفل (مضاف حديثاً) -->
+    <div class="hero-mini-stats">
+        <div class="stat-item">
+            <span class="stat-num">50+</span>
+            <span class="stat-label">Security Labs</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Web Projects</span>
+        </div>
+    </div>
+
+    <!-- مؤشر السكرول للأسفل في أقصى اليمين من الأسفل -->
+    <a href="#about" class="scroll-down-indicator">
+        <span class="mouse-icon">
+            <span class="wheel"></span>
+        </span>
+        <span class="scroll-text">Scroll</span>
+    </a>
+</section>
+  </main>
+
+  <!-- ==========================================================
+     [SECTION: ABOUT ME - ROADMAP WITH EXACT DATES]
+     ========================================================== -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        
+        <div class="section-header">
+            <span class="section-subtitle">01. MY JOURNEY & MILESTONES</span>
+            <h2 class="section-title">Career & <span class="highlight-text">Education Roadmap</span></h2>
+            <p class="section-desc">Click on any milestone to view detailed achievements, skills, and background.</p>
+        </div>
+
+        <div class="timeline-wrapper">
+            <div class="timeline-line"></div>
+
+            <!-- نهاية الخط المضيئة: To Be Continued -->
+            <div class="timeline-end-cap">
+                <div class="end-cap-dot"></div>
+                <span class="end-cap-text">To Be Continued...</span>
+            </div>
+
+            <!-- 1. التدريب الحالي - 42 عمان (10/2026 - Present) -->
+            <div class="timeline-item right" onclick="openRoadmapModal('amman42')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">10/2026 - Present</span>
+                    <h3 class="timeline-title">Cyber Security Trainee at 42 Amman</h3>
+                    <p class="timeline-brief">Intensive peer-to-peer coding and security training in Jordan.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+            <!-- 2. تدريب السايبر - جامعة سمية PSUT (05/2026 - 08/2026) -->
+            <div class="timeline-item left" onclick="openRoadmapModal('psut')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">05/2026 - 08/2026</span>
+                    <h3 class="timeline-title">Cyber Security & SOC Training - PSUT</h3>
+                    <p class="timeline-brief">SOC operations, SIEM monitoring, log analysis, and threat intelligence.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+            <!-- 3. الخبرات العملية الميدانية (المملكة المتحدة: 2022 - 2024) -->
+            <div class="timeline-item right" onclick="openRoadmapModal('ops')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2022 - 2024 (UK)</span>
+                    <h3 class="timeline-title">Operational Work Experience</h3>
+                    <p class="timeline-brief">Farm operations, warehouse logistics, restaurant hospitality, and vehicle care services in the UK.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+            <!-- 4. الماجستير في الحوسبة (2022 - 2023) -->
+            <div class="timeline-item left" onclick="openRoadmapModal('msc')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2022 - 2023</span>
+                    <h3 class="timeline-title">Master's Degree in Computing</h3>
+                    <p class="timeline-brief">Completed postgraduate studies in the UK, mastering computational systems and architectures.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+            <!-- 5. فرونت إند - كلية لومينوس (2021) -->
+            <div class="timeline-item right" onclick="openRoadmapModal('luminus')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2021</span>
+                    <h3 class="timeline-title">Front-End Development - Luminus</h3>
+                    <p class="timeline-brief">Web design and front-end development training at Luminus Technical University College.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+            <!-- 6. الهندسة الميكانيكية (2016 - 2021) -->
+            <div class="timeline-item left" onclick="openRoadmapModal('mech')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2016 - 2021</span>
+                    <h3 class="timeline-title">B.Sc. in Mechanical Engineering</h3>
+                    <p class="timeline-brief">Graduated from Jordan with analytical problem-solving and systems logic.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+            <!-- 7. الثانوية العامة - السعودية (2015) -->
+            <div class="timeline-item right" onclick="openRoadmapModal('highschool')">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path></svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2015</span>
+                    <h3 class="timeline-title">High School Graduation</h3>
+                    <p class="timeline-brief">Secondary education foundation and scientific background completed in Saudi Arabia.</p>
+                    <span class="click-hint">Click for details →</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- النافذة المنبثقة للتفاصيل -->
+    <div id="roadmap-modal" class="modal-overlay" onclick="closeRoadmapModal(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeRoadmapModalDirect()">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-img" src="" alt="Milestone Image">
+                </div>
+                <div class="modal-text">
+                    <span id="modal-tag" class="modal-tag">Category</span>
+                    <h3 id="modal-title" class="modal-title">Title</h3>
+                    <p id="modal-desc" class="modal-desc">Detailed Description</p>
+                    <div id="modal-tech" class="modal-tech-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <script src="script.js"></script>
+</body>
+</html>

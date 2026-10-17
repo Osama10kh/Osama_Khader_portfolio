@@ -129,16 +129,13 @@
             <span class="stat-label">Web Projects</span>
         </div>
     </div>
-
-    <!-- مؤشر السكرول للأسفل في أقصى اليمين من الأسفل -->
-    <a href="#about" class="scroll-down-indicator">
-        <span class="mouse-icon">
-            <span class="wheel"></span>
-        </span>
-        <span class="scroll-text">Scroll</span>
-    </a>
 </section>
   </main>
+
+  <!-- فاصل سيبراني بين السكشنات -->
+<div class="section-divider">
+    <div class="divider-line"></div>
+</div>
 
   <!-- ==========================================================
      [SECTION: ABOUT ME - ROADMAP WITH EXACT DATES]
@@ -273,6 +270,554 @@
         </div>
     </div>
 </section>
+
+<!-- فاصل سيبراني بين السكشنات -->
+<div class="section-divider">
+    <div class="divider-line"></div>
+</div>
+
+<!-- ==========================================================
+     [SECTION 02: FEATURED PROJECTS - CAROUSEL SLIDER]
+     ========================================================== -->
+<section id="projects" class="projects-section">
+    <div class="projects-container">
+        
+        <!-- عنوان القسم -->
+        <div class="section-header">
+            <span class="section-subtitle">02. MY WORK & LABS</span>
+            <h2 class="section-title">Featured <span class="highlight-text">Projects & Labs Archive</span></h2>
+            <p class="section-desc">Explore multi-disciplinary labs spanning Cyber Security, IT Development, and Mechanical Engineering.</p>
+        </div>
+
+        <!-- أزرار الفلترة التفاعلية -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="cyber">Cyber Security</button>
+            <button class="filter-btn" data-category="it">IT & Front-End</button>
+            <button class="filter-btn" data-category="engineering">Engineering</button>
+        </div>
+
+        <!-- منطقة الـ Carousel مع الأسهم على اليمين واليسار -->
+        <div class="carousel-wrapper">
+            <!-- سهم الشمال (على أقصى يسار البطاقات) -->
+            <button class="carousel-arrow left-arrow" id="slider-prev-btn" aria-label="Previous Project">❮</button>
+
+            <!-- النافذة المقصوصة التي تعرض 3 مشاريع فقط -->
+            <div class="carousel-track-container" id="carousel-track-container">
+                <div class="carousel-track" id="carousel-track">
+
+                    <!-- كارد 1: Cyber Security -->
+                    <div class="project-card" data-category="cyber" onclick="openProjectModal('soclab')">
+                        <div class="project-banner">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Mini SOC & Detection Lab">
+                            <span class="project-badge">Cyber Defense</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Mini SOC & Wazuh Detection Lab</h3>
+                            <p class="project-brief">Built a Mini SOC using Wazuh SIEM, Windows, Linux, and VirtualBox. Configured Sysmon and custom detection rules.</p>
+                            <div class="project-tech">
+                                <span>Wazuh SIEM</span>
+                                <span>Sysmon</span>
+                                <span>VirtualBox</span>
+                                <span>Log Analysis</span>
+                            </div>
+                            <span class="view-details-btn">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- كارد 2: Cyber Security -->
+                    <div class="project-card" data-category="cyber" onclick="openProjectModal('ctflabs')">
+                        <div class="project-banner">
+                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Cyber Security Labs">
+                            <span class="project-badge">CTF & Labs</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">TryHackMe & CyberDefenders Labs</h3>
+                            <p class="project-brief">Completed hands-on cybersecurity rooms focusing on DFIR, packet analysis, threat hunting, and vulnerability assessment.</p>
+                            <div class="project-tech">
+                                <span>TryHackMe</span>
+                                <span>CyberDefenders</span>
+                                <span>DFIR</span>
+                                <span>Wireshark</span>
+                            </div>
+                            <span class="view-details-btn">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- كارد 3: IT & Front-End -->
+                    <div class="project-card" data-category="it" onclick="openProjectModal('pwa')">
+                        <div class="project-banner">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="PWA Frameworks Evaluation">
+                            <span class="project-badge">IT & Web</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">PWA Frameworks Comparative Evaluation</h3>
+                            <p class="project-brief">Compared React, Angular, and Vue for Progressive Web Applications. Built prototypes to test performance and load speed.</p>
+                            <div class="project-tech">
+                                <span>React / Vue / Angular</span>
+                                <span>PWA</span>
+                                <span>JavaScript</span>
+                                <span>Performance</span>
+                            </div>
+                            <span class="view-details-btn">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- كارد 4: Engineering -->
+                    <div class="project-card" data-category="engineering" onclick="openProjectModal('mechanical')">
+                        <div class="project-banner">
+                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="ZMAK5 Alloy Analysis">
+                            <span class="project-badge">Engineering</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Effects of Adding Copper to ZMAK5 Alloy</h3>
+                            <p class="project-brief">Analyzed stress-strain behavior and material performance under various loads. Compared material hardness results.</p>
+                            <div class="project-tech">
+                                <span>Stress-Strain</span>
+                                <span>Metallurgy</span>
+                                <span>Lab Testing</span>
+                                <span>Materials</span>
+                            </div>
+                            <span class="view-details-btn">View Details →</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- سهم اليمين (على أقصى يمين البطاقات) -->
+            <button class="carousel-arrow right-arrow" id="slider-next-btn" aria-label="Next Project">❯</button>
+        </div>
+
+        <!-- بانر القيت هاب وقوقل درايف -->
+        <div class="github-archive-banner">
+            <div class="archive-text">
+                <h3>Looking for source code & research papers?</h3>
+                <p>Explore complete code archives on GitHub or access technical research reports via Google Drive.</p>
+            </div>
+            <div class="archive-buttons-group">
+                <a href="https://github.com/OsamaKhader" target="_blank" class="github-archive-btn">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    GitHub Repos
+                </a>
+                <a href="#" target="_blank" class="gdrive-archive-btn">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Google Drive Research
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal التفاصيل -->
+    <div id="project-modal" class="modal-overlay" onclick="closeProjectModal(event)">
+        <div class="modal-card project-modal-card">
+            <button class="modal-close" onclick="closeProjectModalDirect()">&times;</button>
+            <div class="modal-body-project">
+                <div class="modal-project-img-box">
+                    <img id="p-modal-img" src="" alt="Project Image">
+                </div>
+                <div class="modal-project-content">
+                    <span id="p-modal-tag" class="modal-tag">Category</span>
+                    <h3 id="p-modal-title" class="modal-title">Project Title</h3>
+                    <p id="p-modal-desc" class="modal-desc">Detailed architecture and scenario will appear here.</p>
+                    <div id="p-modal-tech" class="modal-tech-list"></div>
+                    <div class="modal-actions">
+                        <a id="p-modal-github" href="#" target="_blank" class="modal-btn github-btn">GitHub Repo</a>
+                        <a id="p-modal-live" href="#" target="_blank" class="modal-btn live-btn">Live Docs / Drive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- فاصل سيبراني بين السكشنات -->
+<div class="section-divider">
+    <div class="divider-line"></div>
+</div>
+
+<!-- ==========================================================
+     [SECTION 03: SKILLS, CERTIFICATIONS & INTERESTS SLIDERS]
+     ========================================================== -->
+<section id="skills" class="skills-section">
+    <div class="skills-container">
+        
+        <!-- عنوان القسم الرئيسي -->
+        <div class="section-header">
+            <span class="section-subtitle">03. CREDENTIALS & LIFESTYLE</span>
+            <h2 class="section-title">Skills, <span class="highlight-text">Certifications & Passions</span></h2>
+            <p class="section-desc">A dynamic breakdown of my technical capabilities, certified achievements, and personal interests.</p>
+        </div>
+
+        <!-- ===================================================
+             1. صف المهارات التقنية (Technical Skills Row)
+             =================================================== -->
+        <div class="slider-row-block">
+            <div class="row-header">
+                <h3 class="subsection-title">⚡ Technical Capabilities</h3>
+                <div class="row-arrows">
+                    <button class="row-arrow-btn" onclick="moveRowSlider('skills-track', 'prev')">❮</button>
+                    <button class="row-arrow-btn" onclick="moveRowSlider('skills-track', 'next')">❯</button>
+                </div>
+            </div>
+
+            <div class="row-track-container">
+                <div class="row-track" id="skills-track">
+
+                    <div class="slider-item-card skill-item">
+                        <div class="item-icon">🛡️</div>
+                        <h4>Cyber Defense & SOC</h4>
+                        <p>SIEM deployment, threat intelligence, and log monitoring.</p>
+                        <div class="skill-mini-tags">
+                            <span>Wazuh SIEM</span>
+                            <span>MITRE ATT&CK</span>
+                            <span>Sysmon</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-item-card skill-item">
+                        <div class="item-icon">🔍</div>
+                        <h4>Digital Forensics & Incident Response</h4>
+                        <p>Packet analysis, anomaly detection, and DFIR triage.</p>
+                        <div class="skill-mini-tags">
+                            <span>Wireshark</span>
+                            <span>DFIR</span>
+                            <span>OSINT</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-item-card skill-item">
+                        <div class="item-icon">💻</div>
+                        <h4>Front-End Development</h4>
+                        <p>Responsive dark-themed UI components and dynamic DOM controls.</p>
+                        <div class="skill-mini-tags">
+                            <span>HTML5</span>
+                            <span>CSS3 Flexbox</span>
+                            <span>Vanilla JS</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-item-card skill-item">
+                        <div class="item-icon">⚙️</div>
+                        <h4>Engineering & Problem Solving</h4>
+                        <p>Thermodynamic analysis, CAD modeling, and stress calculations.</p>
+                        <div class="skill-mini-tags">
+                            <span>CAD Design</span>
+                            <span>Stress Analysis</span>
+                            <span>Materials</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================================================
+             2. صف الشهادات واللابات (Certifications Row)
+             =================================================== -->
+        <div class="slider-row-block">
+            <div class="row-header">
+                <h3 class="subsection-title">📜 Certifications & Security Badges</h3>
+                <div class="row-arrows">
+                    <button class="row-arrow-btn" onclick="moveRowSlider('certs-track', 'prev')">❮</button>
+                    <button class="row-arrow-btn" onclick="moveRowSlider('certs-track', 'next')">❯</button>
+                </div>
+            </div>
+
+            <div class="row-track-container">
+                <div class="row-track" id="certs-track">
+
+                    <div class="slider-item-card cert-item">
+                        <div class="cert-status-badge active">Active Lab</div>
+                        <h4>TryHackMe & CyberDefenders</h4>
+                        <p>Hands-on DFIR rooms, malware investigation, and threat hunting labs.</p>
+                        <a href="https://tryhackme.com" target="_blank" class="row-item-link">Verify Profile →</a>
+                    </div>
+
+                    <div class="slider-item-card cert-item">
+                        <div class="cert-status-badge verified">Verified</div>
+                        <h4>Linux Systems & OSINT Essentials</h4>
+                        <p>Command-line system parameters, metadata analysis, and shell scripts.</p>
+                        <a href="#" target="_blank" class="row-item-link">View Cert →</a>
+                    </div>
+
+                    <div class="slider-item-card cert-item">
+                        <div class="cert-status-badge verified">Verified</div>
+                        <h4>Front-End Engineering Core</h4>
+                        <p>Modern layout architecture, UI/UX performance, and JS DOM control.</p>
+                        <a href="#" target="_blank" class="row-item-link">View Cert →</a>
+                    </div>
+
+                    <div class="slider-item-card cert-item">
+                        <div class="cert-status-badge">Certified</div>
+                        <h4>SOC Analysis & SIEM Deployment</h4>
+                        <p>Configuring log forwarding, alerting rules, and incident triage workflows.</p>
+                        <a href="#" target="_blank" class="row-item-link">View Cert →</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================================================
+             3. صف الهوايات والاهتمامات (Hobbies Row)
+             =================================================== -->
+        <div class="slider-row-block">
+            <div class="row-header">
+                <h3 class="subsection-title">🏹 Passions & Lifestyle</h3>
+                <div class="row-arrows">
+                    <button class="row-arrow-btn" onclick="moveRowSlider('hobbies-track', 'prev')">❮</button>
+                    <button class="row-arrow-btn" onclick="moveRowSlider('hobbies-track', 'next')">❯</button>
+                </div>
+            </div>
+
+            <div class="row-track-container">
+                <div class="row-track" id="hobbies-track">
+
+                    <div class="slider-item-card hobby-item">
+                        <div class="item-icon">🏋️‍♂️</div>
+                        <h4>Strength & Calisthenics</h4>
+                        <p>Regular strength training, pull-ups, bench press, and physical conditioning.</p>
+                    </div>
+
+                    <div class="slider-item-card hobby-item">
+                        <div class="item-icon">🌐</div>
+                        <h4>Languages & Cultural Exchange</h4>
+                        <p>Fluent in Arabic & English, actively practicing conversational Russian daily.</p>
+                    </div>
+
+                    <div class="slider-item-card hobby-item">
+                        <div class="item-icon">🏕️</div>
+                        <h4>Camping & Outdoor Adventures</h4>
+                        <p>Passionate about mountain camping, outdoor exploration, and nature survival.</p>
+                    </div>
+
+                    <div class="slider-item-card hobby-item">
+                        <div class="item-icon">🏇</div>
+                        <h4>Horse Riding & Sports</h4>
+                        <p>Active participation in horseback riding, football matches, running, and swimming.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- فاصل سيبراني مضيء -->
+<div class="section-divider">
+    <div class="divider-line"></div>
+</div>
+
+
+<!-- ==========================================================
+     [SECTION 04: TACTICAL CONTACT & CONNECT]
+     ========================================================== -->
+<section id="contact" class="contact-section">
+    <div class="contact-container">
+        
+        <!-- عنوان القسم الرئيسي -->
+        <div class="section-header">
+            <span class="section-subtitle">04. INITIATE CONTACT</span>
+            <h2 class="section-title">Get In <span class="highlight-text">Touch & Connect</span></h2>
+            <p class="section-desc">Whether you have an open SOC/Cyber Security role, a Web Engineering project, or just want to connect—my inbox is always open.</p>
+        </div>
+
+        <div class="contact-grid">
+
+            <!-- 1. الشاشة التكتيكية والمعلومات الشخصية (Cyber Console) -->
+            <div class="contact-info-card">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">osama_khader_console.sh</span>
+                </div>
+
+                <div class="terminal-body">
+                    <p class="terminal-line"><span class="prompt">$</span> status --availability</p>
+                    <p class="terminal-response highlight-active">🟢 Available for Full-Time, Remote & Contract Roles</p>
+                    
+                    <p class="terminal-line"><span class="prompt">$</span> location --get</p>
+                    <p class="terminal-response">📍 Amman, Jordan (Open to Remote / Relocation)</p>
+
+                    <p class="terminal-line"><span class="prompt">$</span> contact --email</p>
+                    <div class="email-copy-box">
+                        <span id="user-email-text">eng.o.khader@gmail.com</span>
+                        <button class="copy-email-btn" onclick="copyEmailToClipboard()">
+                            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span id="copy-btn-text">Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- روابط التواصل والمنصات الرسمية -->
+                <div class="social-links-grid">
+                    <a href="mailto:eng.o.khader@gmail.com" class="social-btn email-btn">
+                        <span>✉️ Direct Email</span>
+                    </a>
+                    <a href="https://wa.me/962700000000" target="_blank" class="social-btn whatsapp-btn">
+                        <span>💬 WhatsApp Direct</span>
+                    </a>
+                    <a href="https://github.com/OsamaKhader" target="_blank" class="social-btn github-btn">
+                        <span>🐙 GitHub Profile</span>
+                    </a>
+                    <a href="#" target="_blank" class="social-btn linkedin-btn">
+                        <span>💼 LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. نموذج إرسال الرسائل (Contact Form with Formspree & JS Validation) -->
+            <div class="contact-form-card">
+                <!-- استبدل YOUR_FORMSPREE_ID بـ الكود الخاص بك من موقع formspree.io ليوصلك الرسائل فوراً -->
+                <form id="portfolio-contact-form" action="https://formspree.io/f/xyekovje" method="POST" onsubmit="handleFormSubmit(event)" novalidate>
+                    
+                    <div class="form-group">
+                        <label for="sender-name">YOUR NAME / COMPANY *</label>
+                        <input type="text" id="sender-name" name="name" placeholder="e.g. John Doe / Tech Corp" required>
+                        <span class="field-error-msg" id="err-name"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sender-email">YOUR EMAIL ADDRESS *</label>
+                        <input type="email" id="sender-email" name="email" placeholder="name@company.com" required>
+                        <span class="field-error-msg" id="err-email"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sender-phone">PHONE / WHATSAPP <span class="opt-tag">(Optional)</span></label>
+                        <input type="tel" id="sender-phone" name="phone" placeholder="+962 7X XXX XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="msg-subject">SUBJECT *</label>
+                        <input type="text" id="msg-subject" name="subject" placeholder="SOC Analyst Role / Web Project / Inquiry" required>
+                        <span class="field-error-msg" id="err-subject"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="msg-content">MESSAGE *</label>
+                        <textarea id="msg-content" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+                        <span class="field-error-msg" id="err-message"></span>
+                    </div>
+
+                    <button type="submit" class="submit-msg-btn" id="submit-btn">
+                        <span>SEND MESSAGE ➔</span>
+                    </button>
+                    <p id="form-response-status" class="form-status-text"></p>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- الفوتر الرئيسي للموقع (Footer) -->
+<!-- ==========================================================
+     [SECTION 05: DYNAMIC TACTICAL CYBER FOOTER]
+     ========================================================== -->
+<footer class="cyber-footer">
+    <div class="footer-container">
+        
+        <!-- الجزء العلوي للفوتر -->
+        <div class="footer-top-grid">
+            
+            <!-- العمود الأول: التعريف والشعار -->
+            <div class="footer-brand-col">
+                <a href="#hero" class="footer-logo">
+                    <span class="logo-accent">&lt;</span>OSAMA_KHADER<span class="logo-accent"> /&gt;</span>
+                </a>
+                <p class="footer-bio">
+                    Multidisciplinary professional combining Mechanical Engineering logic, SOC Cyber Defense analysis, and Modern Front-End Development.
+                </p>
+                <div class="footer-badges">
+                    <span class="f-badge">Mechanical Eng.</span>
+                    <span class="f-badge">SOC Analyst</span>
+                    <span class="f-badge">Front-End Dev</span>
+                </div>
+            </div>
+
+            <!-- العمود الثاني: التنقل السريع -->
+            <div class="footer-links-col">
+                <h4 class="footer-heading">Quick Navigation</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="#hero">00. Home / Hero</a></li>
+                    <li><a href="#roadmap">01. Tactical Roadmap</a></li>
+                    <li><a href="#projects">02. Featured Projects</a></li>
+                    <li><a href="#skills">03. Credentials & Passions</a></li>
+                    <li><a href="#contact">04. Contact Console</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود الثالث: الاتصال والروابط الرسمية -->
+            <div class="footer-social-col">
+                <h4 class="footer-heading">Connect & Repositories</h4>
+                <div class="footer-social-links">
+                    <a href="https://github.com/OsamaKhader" target="_blank" class="f-social-item">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <span>GitHub Archives</span>
+                    </a>
+                    <a href="mailto:eng.o.khader@gmail.com" class="f-social-item">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>Email Direct</span>
+                    </a>
+                    <a href="#" target="_blank" class="f-social-item">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <span>LinkedIn Network</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- فاصل سيبراني ناعم -->
+        <div class="footer-divider-line"></div>
+
+        <!-- الجزء السفلي: حالة النظام، التوقيت الحي، والحقوق الديناميكية -->
+        <div class="footer-bottom-bar">
+            
+            <div class="footer-status-indicator">
+                <span class="status-dot-pulse"></span>
+                <span class="status-text">SYSTEM STATUS: <span class="status-green">ONLINE</span></span>
+                <span class="status-separator">|</span>
+                <span id="footer-live-clock" class="live-clock-text">AMMAN 00:00:00</span>
+            </div>
+
+            <p class="copyright-text">
+                © <span id="current-year">2026</span> <span class="highlight">Osama Khader</span>. Built with Cyber-Tactical UI Engineering.
+            </p>
+
+        </div>
+
+    </div>
+</footer>
+
+<!-- ==========================================================
+     [DUAL-ACTION SMART FIXED SCROLL INDICATOR - BOTTOM RIGHT]
+     ========================================================== -->
+<div id="smart-scroll-container" class="smart-scroll-container">
+    <!-- سهم الصعود للأعلى -->
+    <button class="scroll-arrow-btn" onclick="scrollStepUp()" aria-label="Scroll Up">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <!-- نص حالة السكرول أو زر التوب -->
+    <button id="scroll-main-btn" class="scroll-main-btn" onclick="handleMainScrollAction()" aria-label="Scroll Action">
+        <span id="scroll-text">Scroll</span>
+    </button>
+
+    <!-- سهم النزول للأسفل -->
+    <button class="scroll-arrow-btn" onclick="scrollStepDown()" aria-label="Scroll Down">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+</div>
+<hr>
 
   <script src="script.js"></script>
 </body>

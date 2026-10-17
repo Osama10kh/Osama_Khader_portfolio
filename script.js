@@ -139,12 +139,23 @@ if (logoTrigger) {
 }
 
 /* ==========================================================
+   [NAVBAR SCROLL BACKGROUND TOGGLE]
+   ========================================================== */
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar'); // أو قم بتغيير اسم الكلاس حسب المسمى لديك (مثلاً header)
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+/* ==========================================================
    [SECTION: FULL ROADMAP DATA CONTROLLER]
    ========================================================== */
 
-/* ==========================================================
-   [SECTION: ROADMAP DATA WITH EXACT DATES]
-   ========================================================== */
 
 const roadmapData = {
     amman42: {
@@ -227,4 +238,446 @@ function closeRoadmapModal(event) {
     if (event.target.classList.contains("modal-overlay")) {
         closeRoadmapModalDirect();
     }
+}
+
+
+
+/* ==========================================================
+   [DUAL-ACTION SMART SCROLL CONTROLLER]
+   ========================================================== */
+
+// النزول بمقدار شاشة واحدة للأسفل
+function scrollStepDown() {
+    window.scrollBy({
+        top: window.innerHeight * 0.85,
+        behavior: 'smooth'
+    });
+}
+
+// الصعود بمقدار شاشة واحدة للأعلى
+function scrollStepUp() {
+    window.scrollBy({
+        top: -window.innerHeight * 0.85,
+        behavior: 'smooth'
+    });
+}
+
+// الوظيفة للمساحة الوسطية (التحول تلقائياً لزر Top عند النهاية)
+function handleMainScrollAction() {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const fullHeight = document.documentElement.scrollHeight;
+
+    // إذا وصل المستخدم لنهاية الصفحة تقريباً، يعيده لأول الصفحة
+    if (scrollPosition + windowHeight >= fullHeight - 80) {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        // افتراضياً ينزل للاسفل إذا ضغط على النص
+        scrollStepDown();
+    }
+}
+
+// مراقبة موقع الصفحة لتحديث نص الزر (Scroll / Top)
+window.addEventListener('scroll', () => {
+    const btnText = document.getElementById('scroll-text');
+    if (!btnText) return;
+
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const fullHeight = document.documentElement.scrollHeight;
+
+    // إذا وصل المستخدم لنهاية الصفحة
+    if (scrollPosition + windowHeight >= fullHeight - 80) {
+        btnText.textContent = "Top";
+    } else {
+        btnText.textContent = "Scroll";
+    }
+});
+
+
+/* ==========================================================
+   [CAROUSEL SLIDER & FILTER LOGIC FIX]
+   ========================================================== */
+
+const projectData = {
+    soclab: {
+        title: "Mini SOC & Wazuh Detection Lab",
+        tag: "Cyber Security & SOC",
+        img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80",
+        desc: "Built a complete Mini SOC & Detection Lab utilizing Wazuh SIEM, Windows, Linux, and VirtualBox. Configured Sysmon, centralized log collection, and custom detection rules to identify suspicious activities and simulated attacks.",
+        tech: ["Wazuh SIEM", "Sysmon", "VirtualBox", "Log Analysis"],
+        github: "https://github.com/OsamaKhader",
+        live: "#"
+    },
+    ctflabs: {
+        title: "TryHackMe & CyberDefenders Labs",
+        tag: "Cyber Security & DFIR",
+        img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
+        desc: "Active participation in TryHackMe and CyberDefenders rooms. Solved hands-on challenges focused on Digital Forensics and Incident Response (DFIR), log investigation, threat hunting, and packet analysis.",
+        tech: ["TryHackMe", "CyberDefenders", "DFIR", "Wireshark", "Threat Hunting"],
+        github: "https://github.com/OsamaKhader",
+        live: "https://tryhackme.com"
+    },
+    pwa: {
+        title: "PWA Frameworks Comparative Evaluation",
+        tag: "IT & Front-End Engineering",
+        img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+        desc: "Compared popular JavaScript frameworks (React, Angular, Vue) for building Progressive Web Applications. Built small prototype PWAs to test performance, load speed, and offline capabilities.",
+        tech: ["React / Angular / Vue", "PWA", "JavaScript", "Performance"],
+        github: "https://github.com/OsamaKhader",
+        live: "#"
+    },
+    mechanical: {
+        title: "Effects of Adding Copper to ZMAK5 Alloy",
+        tag: "Mechanical Engineering",
+        img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+        desc: "Analyzed the stress-strain behavior and material performance of ZMAK5 alloy under various loads. Utilized lab measurement tools to compare material hardness results.",
+        tech: ["Stress-Strain", "Metallurgy", "Lab Testing", "Materials"],
+        github: "https://github.com/OsamaKhader",
+        live: "#"
+    }
+};
+
+let currentIndex = 0;
+let autoScrollTimer = null;
+
+// تشغيل الفلتر والـ Carousel عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+    initProjectFilters();
+    setupCarouselControls();
+    startAutoScroll();
+});
+
+// 1. برمجية الفلتر المصلحة
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.carousel-track .project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+
+            const category = e.target.getAttribute('data-category');
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // إعادة ضبط موقع السلايدر للأول عند الفلترة
+            currentIndex = 0;
+            updateCarouselPosition();
+        });
+    });
+}
+
+// 2. التحكم بالأسهم للتحريك يمين ويسار
+function setupCarouselControls() {
+    const prevBtn = document.getElementById('slider-prev-btn');
+    const nextBtn = document.getElementById('slider-next-btn');
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            moveCarousel('prev');
+            resetAutoScroll();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            moveCarousel('next');
+            resetAutoScroll();
+        });
+    }
+}
+
+function moveCarousel(direction) {
+    const track = document.getElementById('carousel-track');
+    const visibleCards = Array.from(document.querySelectorAll('.carousel-track .project-card'))
+                              .filter(card => card.style.display !== 'none');
+
+    if (visibleCards.length <= 3) return; // لا حاجة للتحريك إذا كان المعروض 3 أو أقل
+
+    const maxIndex = visibleCards.length - 3;
+
+    if (direction === 'next') {
+        currentIndex = (currentIndex >= maxIndex) ? 0 : currentIndex + 1;
+    } else {
+        currentIndex = (currentIndex <= 0) ? maxIndex : currentIndex - 1;
+    }
+
+    updateCarouselPosition();
+}
+
+function updateCarouselPosition() {
+    const track = document.getElementById('carousel-track');
+    if (!track) return;
+
+    // حساب المسافة التي سيقطعها السلايدر (عرض الكارد + Gap)
+    const cardWidth = track.querySelector('.project-card').offsetWidth + 20;
+    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+}
+
+// 3. التمرير التلقائي كل 4 ثوانٍ
+function startAutoScroll() {
+    autoScrollTimer = setInterval(() => {
+        moveCarousel('next');
+    }, 4000);
+}
+
+function resetAutoScroll() {
+    clearInterval(autoScrollTimer);
+    startAutoScroll();
+}
+
+// 4. التحكم بـ Modal التفاصيل
+function openProjectModal(key) {
+    const data = projectData[key];
+    if (!data) return;
+
+    document.getElementById("p-modal-img").src = data.img;
+    document.getElementById("p-modal-tag").textContent = data.tag;
+    document.getElementById("p-modal-title").textContent = data.title;
+    document.getElementById("p-modal-desc").textContent = data.desc;
+
+    document.getElementById("p-modal-github").href = data.github;
+    document.getElementById("p-modal-live").href = data.live;
+
+    const techContainer = document.getElementById("p-modal-tech");
+    techContainer.innerHTML = "";
+    data.tech.forEach(t => {
+        const badge = document.createElement("span");
+        badge.className = "modal-tech-badge";
+        badge.textContent = t;
+        techContainer.appendChild(badge);
+    });
+
+    document.getElementById("project-modal").classList.add("active");
+    document.body.style.cursor = "default";
+}
+
+function closeProjectModalDirect() {
+    document.getElementById("project-modal").classList.remove("active");
+    document.body.style.cursor = "";
+}
+
+function closeProjectModal(event) {
+    if (event.target.classList.contains("modal-overlay")) {
+        closeProjectModalDirect();
+    }
+}
+
+/* ==========================================================
+   [SECTION 03: THREE ROWS SLIDER CONTROLLER]
+   ========================================================== */
+
+const rowPositions = {
+    'skills-track': 0,
+    'certs-track': 0,
+    'hobbies-track': 0
+};
+
+// تحريك الصفوف عند الضغط على الأسهم (يمين / يسار)
+function moveRowSlider(trackId, direction) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+
+    const cards = track.querySelectorAll('.slider-item-card');
+    if (cards.length <= 3) return; // لا تتحرك إذا كانت البطاقات 3 أو أقل
+
+    const maxIndex = cards.length - 3;
+    const cardWidth = cards[0].offsetWidth + 20; // عرض الكارد + Gap
+
+    if (direction === 'next') {
+        rowPositions[trackId] = (rowPositions[trackId] >= maxIndex) ? 0 : rowPositions[trackId] + 1;
+    } else {
+        rowPositions[trackId] = (rowPositions[trackId] <= 0) ? maxIndex : rowPositions[trackId] - 1;
+    }
+
+    track.style.transform = `translateX(-${rowPositions[trackId] * cardWidth}px)`;
+}
+
+// التمرير التلقائي المستمر لكل صف كل 5 ثوانٍ
+setInterval(() => {
+    moveRowSlider('skills-track', 'next');
+}, 5000);
+
+setInterval(() => {
+    moveRowSlider('certs-track', 'next');
+}, 6500);
+
+setInterval(() => {
+    moveRowSlider('hobbies-track', 'next');
+}, 8000);
+
+
+/* ==========================================================
+   [SECTION 04: ADVANCED FORM VALIDATION & CONTACT CONTROLLER]
+   ========================================================== */
+
+// 1. نسخ الإيميل بلمسة واحدة
+function copyEmailToClipboard() {
+    const emailText = document.getElementById("user-email-text").textContent;
+    const btnText = document.getElementById("copy-btn-text");
+
+    navigator.clipboard.writeText(emailText).then(() => {
+        btnText.textContent = "Copied!";
+        setTimeout(() => {
+            btnText.textContent = "Copy";
+        }, 2500);
+    }).catch(err => {
+        console.error("Failed to copy email: ", err);
+    });
+}
+
+// 2. التحقق الذكي من النموذج والإرسال
+async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("portfolio-contact-form");
+    const nameInput = document.getElementById("sender-name");
+    const emailInput = document.getElementById("sender-email");
+    const phoneInput = document.getElementById("sender-phone");
+    const subjectInput = document.getElementById("msg-subject");
+    const messageInput = document.getElementById("msg-content");
+    const statusText = document.getElementById("form-response-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    clearFormErrors();
+    let isValid = true;
+
+    // فحص الاسم
+    if (nameInput.value.trim().length < 2) {
+        showFieldError("err-name", "Please enter your name (at least 2 characters).");
+        isValid = false;
+    }
+
+    // فحص الإيميل بـ Regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+        showFieldError("err-email", "Please enter a valid email address.");
+        isValid = false;
+    }
+
+    // فحص الموضوع
+    if (subjectInput.value.trim().length < 3) {
+        showFieldError("err-subject", "Please enter a subject.");
+        isValid = false;
+    }
+
+    // فحص الرسالة
+    if (messageInput.value.trim().length < 10) {
+        showFieldError("err-message", "Message must be at least 10 characters long.");
+        isValid = false;
+    }
+
+    if (!isValid) {
+        statusText.style.color = "#ff5f56";
+        statusText.textContent = "⚠️ Please fix the errors highlighted above.";
+        return;
+    }
+
+    // تجهيز البيانات بعد نجاح الفحص
+    statusText.style.color = "#00ff88";
+    statusText.textContent = "⚡ Sending message directly to Osama's inbox...";
+    submitBtn.disabled = true;
+
+    const actionUrl = form.getAttribute("action");
+
+    // إرسال البيانات عبر Formspree مجاناً وبصمت (AJAX Fetch)
+    if (actionUrl && !actionUrl.includes("YOUR_FORMSPREE_ID")) {
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(actionUrl, {
+                method: "POST",
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                statusText.style.color = "#00ff88";
+                statusText.textContent = "✅ Message sent successfully! I will reply shortly.";
+                form.reset();
+            } else {
+                throw new Error("Formspree response not OK");
+            }
+        } catch (error) {
+            // كبديل إذا لم يتم إعداد Formspree بعد: فتح mailto تلقائياً
+            fallbackMailto(nameInput.value, emailInput.value, phoneInput.value, subjectInput.value, messageInput.value);
+        }
+    } else {
+        // إذا لم تقم بربط ID الخاص بـ Formspree بعد، يفتح Mailto مباشرة
+        fallbackMailto(nameInput.value, emailInput.value, phoneInput.value, subjectInput.value, messageInput.value);
+    }
+
+    submitBtn.disabled = false;
+}
+
+function fallbackMailto(name, email, phone, subject, message) {
+    const statusText = document.getElementById("form-response-status");
+    const mailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\nMessage:\n${message}`;
+    const mailtoUrl = `mailto:eng.o.khader@gmail.com?subject=${encodeURIComponent(subject + " - " + name)}&body=${encodeURIComponent(mailBody)}`;
+    
+    window.location.href = mailtoUrl;
+    statusText.style.color = "#00ff88";
+    statusText.textContent = "✅ Prepared in your mail client! Press Send.";
+    document.getElementById("portfolio-contact-form").reset();
+}
+
+function showFieldError(errorId, message) {
+    const errorSpan = document.getElementById(errorId);
+    if (errorSpan) {
+        errorSpan.style.display = "block";
+        errorSpan.textContent = message;
+    }
+}
+
+function clearFormErrors() {
+    const errors = document.querySelectorAll(".field-error-msg");
+    errors.forEach(err => {
+        err.textContent = "";
+        err.style.display = "none";
+    });
+}
+
+
+/* ==========================================================
+   [DYNAMIC FOOTER CONTROLLER: AUTO YEAR & LIVE TERMINAL CLOCK]
+   ========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    initDynamicFooter();
+});
+
+function initDynamicFooter() {
+    // 1. تحديث السنة تلقائياً لعدم الحاجه لتعديلها يدوياً أبداً
+    const yearElement = document.getElementById("current-year");
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+    // 2. تشغيل التوقيت الحي المباشر (Amman Local / UTC Clock)
+    updateFooterClock();
+    setInterval(updateFooterClock, 1000);
+}
+
+function updateFooterClock() {
+    const clockElement = document.getElementById("footer-live-clock");
+    if (!clockElement) return;
+
+    const now = new Date();
+    // تحويل الوقت لتنسيق HH:MM:SS
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    clockElement.textContent = `AMMAN ${hours}:${minutes}:${seconds}`;
 }
